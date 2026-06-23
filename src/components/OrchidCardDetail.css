@@ -1,0 +1,33 @@
+/* dialogClassName="orchid-modal" gắn vào .modal-dialog, nên target con của nó */
+.orchid-modal .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden; /* để header bo góc theo modal */
+}
+
+.orchid-modal .modal-header {
+    background: linear-gradient(135deg, #7b2ff7, #2575fc);
+    color: #fff;
+    border-bottom: none;
+}
+
+/* nút X mặc định màu đen, invert cho thành trắng nổi trên nền gradient */
+.orchid-modal .modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.orchid-modal-img {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ListGroup flush: cho mỗi dòng thoáng hơn, viền ngăn nhạt */
+.orchid-modal .list-group-item {
+    padding: 0.6rem 0;
+    background: transparent;
+    border-color: #eee;
+}
+
+.orchid-modal .modal-footer {
+    border-top: none;
+}
