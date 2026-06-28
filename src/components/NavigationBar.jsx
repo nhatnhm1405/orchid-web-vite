@@ -25,6 +25,9 @@ function NavigationBar() {
                         <Nav.Link as={NavLink} to="/contact">
                             <i className="bi bi-envelope me-1"></i>Contact
                         </Nav.Link>
+                        <Nav.Link as={NavLink} to="/profile">
+                            <i className="bi bi-person-circle me-1"></i>Profile
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
