@@ -7,6 +7,8 @@ import Orchids from './components/Orchids'
 import OrchidDetail from './components/OrchidDetail'
 import Contact from './components/Contact'
 import NotFound from './components/NotFound'
+import Natural from './components/Natural'
+import About from './components/About'
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
             <Route path='/' element={<RouteRoot />}>
                 <Route index element={<Orchids />} />
                 <Route path="contact" element={<Contact />} />
+                <Route path="natural" element={<Natural />} />
+                <Route path="about" element={<About />} />
                 <Route path="detail/:id" element={<OrchidDetail />} />
                 <Route path="*" element={<NotFound />} />
             </Route>

@@ -16,6 +16,12 @@ function NavigationBar() {
                         <Nav.Link as={NavLink} to="/" end>
                             <i className="bi bi-house-door me-1"></i>Home
                         </Nav.Link>
+                        <Nav.Link as={NavLink} to="/natural">
+                            <i className="bi bi-tree me-1"></i>Natural
+                        </Nav.Link>
+                        <Nav.Link as={NavLink} to="/about">
+                            <i className="bi bi-info-circle me-1"></i>About
+                        </Nav.Link>
                         <Nav.Link as={NavLink} to="/contact">
                             <i className="bi bi-envelope me-1"></i>Contact
                         </Nav.Link>
