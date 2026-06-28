@@ -3,7 +3,6 @@ import { Badge, Button, Card, Col, Container, Row, Tab, Tabs } from 'react-boots
 import { useSelector } from 'react-redux'
 import './OrchidDetail.css'
 
-// cùng bảng tra cờ như OrchidCard để hiện cờ nước xuất xứ
 const countryCode = {
     Taiwan: 'tw', Japan: 'jp', Thailand: 'th', India: 'in',
     China: 'cn', Brazil: 'br', Mexico: 'mx', Vietnam: 'vn',
@@ -11,16 +10,13 @@ const countryCode = {
     'Costa Rica': 'cr', Nepal: 'np', Ecuador: 'ec', Madagascar: 'mg',
 }
 
-// Trang Detail: đọc :id từ URL -> tìm orchid -> hiển thị toàn trang
 export default function OrchidDetail() {
     const { id } = useParams()
     const navigate = useNavigate()
     const list = useSelector(state => state.orchids.list)
 
-    // mockapi trả id dạng string nên so sánh string với string
     const orchid = list.find(o => String(o.id) === String(id))
 
-    // GUARD: vào id không tồn tại -> orchid undefined -> chặn để khỏi crash
     if (!orchid) {
         return (
             <Container className="py-5 text-center">
@@ -40,14 +36,12 @@ export default function OrchidDetail() {
 
     return (
         <Container className="orchid-detail py-4">
-            {/* navigate(-1): lùi về đúng trang vừa đứng (Home/Contact) */}
             <Button variant="link" className="px-0 mb-3 text-decoration-none orchid-back" onClick={() => navigate(-1)}>
                 <i className="bi bi-arrow-left"></i> Back
             </Button>
 
             <Card className="orchid-detail-card border-0 shadow-lg">
                 <Row className="g-0">
-                    {/* Cột trái: ảnh lớn + ribbon */}
                     <Col md={6}>
                         <div className="orchid-detail-img-wrap h-100">
                             <img
@@ -56,13 +50,11 @@ export default function OrchidDetail() {
                                 onError={(e) => { e.currentTarget.src = fallback }}
                                 className="orchid-detail-img"
                             />
-                            {/* ribbon Special nổi góc trên-trái ảnh */}
                             {isSpecial && (
                                 <span className="orchid-ribbon">
                                     <i className="bi bi-star-fill"></i> Special
                                 </span>
                             )}
-                            {/* tên + xuất xứ chìm dưới đáy ảnh */}
                             <div className="orchid-img-caption">
                                 <Badge bg="light" text="dark" className="mb-2">{category}</Badge>
                                 <h2 className="text-white fw-bold mb-1">{name}</h2>
@@ -76,12 +68,10 @@ export default function OrchidDetail() {
                         </div>
                     </Col>
 
-                    {/* Cột phải: tabs Info / Video */}
                     <Col md={6}>
                         <Card.Body className="d-flex flex-column h-100 p-4 p-lg-5">
                             <Tabs defaultActiveKey="info" className="mb-3">
                                 <Tab eventKey="info" title={<><i className="bi bi-info-circle me-1"></i>Info</>}>
-                                    {/* hàng stat: rating + likes */}
                                     <Row className="g-3 mb-4">
                                         <Col xs={6}>
                                             <div className="orchid-stat">
@@ -102,9 +92,7 @@ export default function OrchidDetail() {
                                             <span className="orchid-info-icon"><i className="bi bi-tag-fill"></i></span>
                                             <span className="orchid-info-key">Type</span>
                                             <span className="orchid-info-val">
-                                                {isNatural
-                                                    ? <Badge bg="success">Natural</Badge>
-                                                    : <Badge bg="secondary">Hybrid</Badge>}
+                                                {isNatural ? <Badge bg="success">Natural</Badge> : <Badge bg="secondary">Hybrid</Badge>}
                                             </span>
                                         </li>
                                         <li>
@@ -132,23 +120,16 @@ export default function OrchidDetail() {
                                 </Tab>
 
                                 <Tab eventKey="video" title={<><i className="bi bi-play-circle me-1"></i>Video</>}>
-                                    {embedUrl
-                                        ? (
-                                            <div className="ratio ratio-16x9">
-                                                <iframe
-                                                    src={embedUrl}
-                                                    title={name}
-                                                    allowFullScreen
-                                                />
-                                            </div>
-                                        )
-                                        : (
-                                            <p className="text-muted text-center py-4">
-                                                <i className="bi bi-camera-video-off fs-3 d-block mb-2"></i>
-                                                No video available for this orchid.
-                                            </p>
-                                        )
-                                    }
+                                    {embedUrl ? (
+                                        <div className="ratio ratio-16x9">
+                                            <iframe src={embedUrl} title={name} allowFullScreen />
+                                        </div>
+                                    ) : (
+                                        <p className="text-muted text-center py-4">
+                                            <i className="bi bi-camera-video-off fs-3 d-block mb-2"></i>
+                                            No video available for this orchid.
+                                        </p>
+                                    )}
                                 </Tab>
                             </Tabs>
 

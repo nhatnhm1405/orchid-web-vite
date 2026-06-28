@@ -1,4 +1,3 @@
-/* giới hạn bề ngang trang detail cho dễ đọc */
 .orchid-detail {
     max-width: 1180px;
 }
@@ -7,13 +6,11 @@
     font-weight: 500;
 }
 
-/* card bo góc lớn + cắt phần thừa để ảnh bo theo */
 .orchid-detail-card {
     border-radius: 1.25rem;
     overflow: hidden;
 }
 
-/* ----- cột ảnh ----- */
 .orchid-detail-img-wrap {
     position: relative;
     overflow: hidden;
@@ -32,7 +29,6 @@
     transform: scale(1.06);
 }
 
-/* lớp tối chìm dần dưới đáy ảnh để chữ caption nổi rõ */
 .orchid-img-caption {
     position: absolute;
     inset: auto 0 0 0;
@@ -40,7 +36,6 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-/* ribbon Special góc trên-trái */
 .orchid-ribbon {
     position: absolute;
     top: 1rem;
@@ -57,7 +52,6 @@
     gap: 4px;
 }
 
-/* ----- stat boxes ----- */
 .orchid-stat {
     background: var(--bs-tertiary-bg);
     border-radius: 0.75rem;
@@ -80,7 +74,6 @@
     font-weight: 700;
 }
 
-/* ----- info list ----- */
 .orchid-info-list {
     list-style: none;
     margin: 0;
@@ -115,13 +108,11 @@
     color: var(--bs-secondary-color);
 }
 
-/* val đẩy sang phải */
 .orchid-info-val {
     margin-left: auto;
     font-weight: 600;
 }
 
-/* chấm tròn màu (backgroundColor để inline vì phụ thuộc data) */
 .orchid-color-dot {
     display: inline-block;
     width: 14px;

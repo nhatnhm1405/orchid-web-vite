@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Badge, Button, Card } from 'react-bootstrap'
-import './OrchidCard.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import './OrchidCard.css'
 import OrchidCardDetail from './OrchidCardDetail'
 import OrchidForm from './OrchidForm'
 import { deleteOrchid } from '../store/orchidSlice'
@@ -74,7 +74,6 @@ export default function OrchidCard({ orchid }) {
                         {color}
                     </Card.Subtitle>
 
-                    {/* Quick view + Details */}
                     <div className="d-flex gap-2 mb-2">
                         <Button variant="outline-secondary" size="sm" className="flex-fill"
                             onClick={() => setShowModal(true)}>
@@ -86,7 +85,6 @@ export default function OrchidCard({ orchid }) {
                         </Button>
                     </div>
 
-                    {/* Edit + Delete — chỉ hiện khi đã login */}
                     {isLoggedIn && (
                         <div className="d-flex gap-2">
                             <Button variant="outline-warning" size="sm" className="flex-fill"

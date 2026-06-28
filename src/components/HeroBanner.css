@@ -1,17 +1,14 @@
-/* wrap chứa cả carousel (ảnh trượt) + overlay chữ (đứng yên) */
 .hero-banner-wrap {
     position: relative;
     margin-bottom: 2.5rem;
 }
 
-/* mỗi slide: ảnh phủ kín, cao cố định (gradient ghép qua inline style) */
 .hero-slide {
     height: 600px;
     background-size: cover;
     background-position: center;
 }
 
-/* chữ đứng yên, phủ giữa banner; pointer-events none -> click xuyên qua tới dots/mũi tên */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -40,7 +37,6 @@
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* dots & mũi tên rõ hơn trên ảnh sáng */
 .hero-banner .carousel-indicators [data-bs-target] {
     width: 10px;
     height: 10px;

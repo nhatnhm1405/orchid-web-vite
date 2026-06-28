@@ -4,13 +4,11 @@
     overflow: hidden;
 }
 
-/* layout 2 cột bên trong modal */
 .orchid-modal-layout {
     display: flex;
     min-height: 420px;
 }
 
-/* ---- cột trái: ảnh ---- */
 .orchid-modal-img-wrap {
     position: relative;
     flex: 0 0 50%;
@@ -24,7 +22,6 @@
     display: block;
 }
 
-/* ribbon Special góc trên-trái */
 .orchid-modal-ribbon {
     position: absolute;
     top: 14px;
@@ -41,7 +38,6 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-/* tên + category chìm đáy ảnh */
 .orchid-modal-caption {
     position: absolute;
     bottom: 0;
@@ -54,7 +50,6 @@
     align-items: flex-start;
 }
 
-/* ---- cột phải: info ---- */
 .orchid-modal-info {
     flex: 1;
     padding: 1.5rem;
@@ -63,7 +58,6 @@
     position: relative;
 }
 
-/* nút X tự làm, nằm góc trên-phải cột info */
 .orchid-modal-close {
     position: absolute;
     top: 12px;
@@ -81,7 +75,6 @@
     color: var(--bs-body-color);
 }
 
-/* stats: 2 ô xếp ngang */
 .orchid-modal-stats {
     display: flex;
     gap: 1rem;
@@ -102,7 +95,6 @@
     letter-spacing: 0.05em;
 }
 
-/* danh sách thuộc tính */
 .orchid-modal-list {
     list-style: none;
     padding: 0;
@@ -129,7 +121,6 @@
     font-size: 0.82rem;
 }
 
-/* chấm màu */
 .orchid-modal-color-dot {
     display: inline-block;
     width: 13px;
@@ -139,7 +130,6 @@
     flex-shrink: 0;
 }
 
-/* responsive: stack dọc trên mobile */
 @media (max-width: 576px) {
     .orchid-modal-layout {
         flex-direction: column;

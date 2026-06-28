@@ -10,7 +10,7 @@ export const ListOfOrchids = [
         numberOfLike: 192,
         origin: 'Taiwan',
         category: 'Cattleya',
-        clip: 'https://www.youtube.com/watch?v=bhOEYjiBb7o'
+        clip: 'https://www.youtube.com/watch?v=bhOEYjiBb7o',
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ export const ListOfOrchids = [
         numberOfLike: 150,
         origin: 'Japan',
         category: 'Phalaenopsis',
-        clip: 'https://www.youtube.com/watch?v=v4oJmdiS2kQ'
+        clip: 'https://www.youtube.com/watch?v=v4oJmdiS2kQ',
     },
     {
         id: 3,
@@ -36,7 +36,7 @@ export const ListOfOrchids = [
         numberOfLike: 220,
         origin: 'Thailand',
         category: 'Dendrobium',
-        clip: 'https://www.youtube.com/watch?v=s-WlsfzsaRM'
+        clip: 'https://www.youtube.com/watch?v=s-WlsfzsaRM',
     },
     {
         id: 4,
@@ -49,7 +49,7 @@ export const ListOfOrchids = [
         numberOfLike: 175,
         origin: 'India',
         category: 'Vanda',
-        clip: 'https://www.youtube.com/watch?v=MYTVkArZ1M0'
+        clip: 'https://www.youtube.com/watch?v=MYTVkArZ1M0',
     },
     {
         id: 5,
@@ -62,7 +62,7 @@ export const ListOfOrchids = [
         numberOfLike: 98,
         origin: 'China',
         category: 'Cymbidium',
-        clip: ''
+        clip: '',
     },
     {
         id: 6,
@@ -75,7 +75,7 @@ export const ListOfOrchids = [
         numberOfLike: 210,
         origin: 'Brazil',
         category: 'Miltonia',
-        clip: 'https://www.youtube.com/watch?v=MRCx83dnkYk'
+        clip: 'https://www.youtube.com/watch?v=MRCx83dnkYk',
     },
     {
         id: 7,
@@ -88,7 +88,7 @@ export const ListOfOrchids = [
         numberOfLike: 135,
         origin: 'Mexico',
         category: 'Oncidium',
-        clip: 'https://www.youtube.com/watch?v=Hg4Okl7dGhM'
+        clip: 'https://www.youtube.com/watch?v=Hg4Okl7dGhM',
     },
     {
         id: 8,
@@ -101,7 +101,7 @@ export const ListOfOrchids = [
         numberOfLike: 188,
         origin: 'Vietnam',
         category: 'Paphiopedilum',
-        clip: 'https://www.youtube.com/watch?v=PDd2_VMG9F0'
+        clip: 'https://www.youtube.com/watch?v=PDd2_VMG9F0',
     },
     {
         id: 9,
@@ -114,7 +114,7 @@ export const ListOfOrchids = [
         numberOfLike: 75,
         origin: 'Peru',
         category: 'Brassia',
-        clip: 'https://www.youtube.com/watch?v=PDsT6DcRGKo'
+        clip: 'https://www.youtube.com/watch?v=PDsT6DcRGKo',
     },
     {
         id: 10,
@@ -127,7 +127,7 @@ export const ListOfOrchids = [
         numberOfLike: 160,
         origin: 'Guatemala',
         category: 'Lycaste',
-        clip: 'https://www.youtube.com/watch?v=dB-DQ_GeR_Q'
+        clip: 'https://www.youtube.com/watch?v=dB-DQ_GeR_Q',
     },
     {
         id: 11,
@@ -140,7 +140,7 @@ export const ListOfOrchids = [
         numberOfLike: 230,
         origin: 'Colombia',
         category: 'Masdevallia',
-        clip: 'https://www.youtube.com/watch?v=AQYDi_PqlI8'
+        clip: 'https://www.youtube.com/watch?v=AQYDi_PqlI8',
     },
     {
         id: 12,
@@ -153,7 +153,7 @@ export const ListOfOrchids = [
         numberOfLike: 145,
         origin: 'Australia',
         category: 'Zygopetalum',
-        clip: 'https://www.youtube.com/watch?v=1slfJIKGTSk'
+        clip: 'https://www.youtube.com/watch?v=1slfJIKGTSk',
     },
     {
         id: 13,
@@ -166,7 +166,7 @@ export const ListOfOrchids = [
         numberOfLike: 89,
         origin: 'Costa Rica',
         category: 'Epidendrum',
-        clip: 'https://www.youtube.com/watch?v=9f-lsJUTsyI'
+        clip: 'https://www.youtube.com/watch?v=9f-lsJUTsyI',
     },
     {
         id: 14,
@@ -179,7 +179,7 @@ export const ListOfOrchids = [
         numberOfLike: 120,
         origin: 'Nepal',
         category: 'Coelogyne',
-        clip: 'https://www.youtube.com/watch?v=wrYd3b_HZQs'
+        clip: 'https://www.youtube.com/watch?v=wrYd3b_HZQs',
     },
     {
         id: 15,
@@ -192,7 +192,7 @@ export const ListOfOrchids = [
         numberOfLike: 205,
         origin: 'Ecuador',
         category: 'Stanhopea',
-        clip: 'https://www.youtube.com/watch?v=eTmTrytcnrM'
+        clip: 'https://www.youtube.com/watch?v=eTmTrytcnrM',
     },
     {
         id: 16,
@@ -205,6 +205,6 @@ export const ListOfOrchids = [
         numberOfLike: 170,
         origin: 'Madagascar',
         category: 'Angraecum',
-        clip: 'https://www.youtube.com/watch?v=sbyz0rttt0Y&t=329s'
-    }
-];
+        clip: 'https://www.youtube.com/watch?v=sbyz0rttt0Y&t=329s',
+    },
+]

@@ -5,14 +5,14 @@ import { useDispatch } from 'react-redux'
 import { addOrchid, updateOrchid } from '../store/orchidSlice'
 
 const validationSchema = Yup.object({
-    name:        Yup.string().required('Name is required'),
-    category:    Yup.string().required('Category is required'),
-    origin:      Yup.string().required('Origin is required'),
-    color:       Yup.string().required('Color is required'),
-    rating:      Yup.number().min(1).max(5).required('Rating is required'),
-    numberOfLike:Yup.number().min(0).required('Likes is required'),
-    image:       Yup.string().url('Must be a valid URL').required('Image URL is required'),
-    clip:        Yup.string().url('Must be a valid URL').nullable(),
+    name:         Yup.string().required('Name is required'),
+    category:     Yup.string().required('Category is required'),
+    origin:       Yup.string().required('Origin is required'),
+    color:        Yup.string().required('Color is required'),
+    rating:       Yup.number().min(1).max(5).required('Rating is required'),
+    numberOfLike: Yup.number().min(0).required('Likes is required'),
+    image:        Yup.string().url('Must be a valid URL').required('Image URL is required'),
+    clip:         Yup.string().url('Must be a valid URL').nullable(),
 })
 
 const emptyValues = {
@@ -49,7 +49,6 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
 
             <Modal.Body>
                 <Form onSubmit={formik.handleSubmit}>
-                    {/* Name */}
                     <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>
                         <Form.Control
@@ -61,7 +60,6 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
                         <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
                     </Form.Group>
 
-                    {/* Category + Origin */}
                     <div className="d-flex gap-3 mb-3">
                         <Form.Group className="flex-fill">
                             <Form.Label>Category</Form.Label>
@@ -86,7 +84,6 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
                         </Form.Group>
                     </div>
 
-                    {/* Color + Rating + Likes */}
                     <div className="d-flex gap-3 mb-3">
                         <Form.Group className="flex-fill">
                             <Form.Label>Color</Form.Label>
@@ -122,7 +119,6 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
                         </Form.Group>
                     </div>
 
-                    {/* Checkboxes */}
                     <div className="d-flex gap-4 mb-3">
                         <Form.Check
                             type="checkbox"
@@ -140,7 +136,6 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
                         />
                     </div>
 
-                    {/* Image URL */}
                     <Form.Group className="mb-3">
                         <Form.Label>Image URL</Form.Label>
                         <Form.Control
@@ -152,7 +147,6 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
                         <Form.Control.Feedback type="invalid">{formik.errors.image}</Form.Control.Feedback>
                     </Form.Group>
 
-                    {/* Clip URL */}
                     <Form.Group className="mb-4">
                         <Form.Label>Clip URL <span className="text-muted small">(optional)</span></Form.Label>
                         <Form.Control

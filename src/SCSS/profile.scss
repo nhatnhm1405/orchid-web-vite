@@ -9,7 +9,7 @@
     padding: 2.5rem 1rem;
 }
 
-// ── hero card (avatar + tên + chức danh) ──
+// ── hero card (avatar + tên) ──
 .profile-hero {
     @include card($radius-md, $shadow-lg);
     @include gradient-bg($primary, $primary-dark);
@@ -44,10 +44,9 @@
         font-weight: 800;
         margin-bottom: 0.35rem;
     }
-
 }
 
-// ── info card (email, trường...) ──
+// ── info card ──
 .profile-info {
     @include card;
     padding: 1.5rem;

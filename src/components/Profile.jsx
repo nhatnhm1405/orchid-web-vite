@@ -14,13 +14,11 @@ export default function Profile() {
         <div className="profile-page">
             <Container style={{ maxWidth: 600 }}>
 
-                {/* ── Hero ── */}
                 <div className="profile-hero">
                     <div className="profile-hero__avatar-text">N</div>
                     <div className="profile-hero__name">Nguyen Huynh Minh Nhat</div>
                 </div>
 
-                {/* ── Info ── */}
                 <div className="profile-info">
                     <div className="profile-info__title">
                         <i className="bi bi-person-lines-fill me-2"></i>Information

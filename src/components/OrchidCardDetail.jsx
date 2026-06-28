@@ -18,7 +18,6 @@ export default function OrchidCardDetail({ orchid, show, onHide }) {
         <Modal show={show} onHide={onHide} size="lg" centered dialogClassName="orchid-modal">
             <Modal.Body className="p-0">
                 <div className="orchid-modal-layout">
-                    {/* ---- CỘT TRÁI: ảnh + overlay ---- */}
                     <div className="orchid-modal-img-wrap">
                         <img
                             src={image}
@@ -37,7 +36,6 @@ export default function OrchidCardDetail({ orchid, show, onHide }) {
                         </div>
                     </div>
 
-                    {/* ---- CỘT PHẢI: info ---- */}
                     <div className="orchid-modal-info">
                         <button className="orchid-modal-close" onClick={onHide} aria-label="Close">
                             <i className="bi bi-x-lg"></i>
@@ -46,7 +44,6 @@ export default function OrchidCardDetail({ orchid, show, onHide }) {
                         <h5 className="fw-bold mb-1">{name}</h5>
                         <p className="text-muted small mb-4">{category}</p>
 
-                        {/* stat: rating + likes */}
                         <div className="orchid-modal-stats mb-4">
                             <div className="orchid-modal-stat">
                                 <span className="orchid-modal-stat-label">Rating</span>
@@ -58,7 +55,6 @@ export default function OrchidCardDetail({ orchid, show, onHide }) {
                             </div>
                         </div>
 
-                        {/* danh sách thuộc tính */}
                         <ul className="orchid-modal-list">
                             <li>
                                 <i className="bi bi-tag-fill text-primary"></i>

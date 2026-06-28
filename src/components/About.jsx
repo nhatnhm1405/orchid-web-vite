@@ -25,13 +25,12 @@ const faqs = [
 export default function About() {
     return (
         <Container className="py-5" style={{ maxWidth: 900 }}>
-            {/* header */}
             <div className="text-center mb-5">
                 <h1 className="fw-bold">About us</h1>
                 <p className="text-muted">
                     Orchid Gallery is a React application developed through the FER202 Lab series.
-                            It demonstrates core React concepts including components, hooks, routing and UI libraries.
-                            The collection spans {uniqueOrigins} countries across the world.
+                    It demonstrates core React concepts including components, hooks, routing and UI libraries.
+                    The collection spans {uniqueOrigins} countries across the world.
                 </p>
             </div>
 

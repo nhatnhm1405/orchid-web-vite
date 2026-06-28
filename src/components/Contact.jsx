@@ -1,21 +1,18 @@
 import { useState } from 'react'
 import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 
-// Trang Contact: thông tin liên hệ (trái) + form gửi tin nhắn (phải)
 export default function Contact() {
-    // gom dữ liệu form vào 1 object cho gọn
     const [form, setForm] = useState({ name: '', email: '', message: '' })
     const [sent, setSent] = useState(false)
 
-    // 1 handler dùng chung cho mọi input: dựa vào name của input để cập nhật đúng field
     const handleChange = (e) => {
         const { name, value } = e.target
         setForm((prev) => ({ ...prev, [name]: value }))
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()      // chặn reload trang mặc định của form
-        setSent(true)           // demo: chỉ hiện thông báo, chưa gửi đi đâu
+        e.preventDefault()
+        setSent(true)
         setForm({ name: '', email: '', message: '' })
     }
 
@@ -26,7 +23,6 @@ export default function Contact() {
             </div>
 
             <Row className="g-4">
-                {/* Cột trái: thông tin liên hệ */}
                 <Col md={5}>
                     <Card className="border-0 shadow-sm h-100">
                         <Card.Body className="p-4 d-flex flex-column gap-4">
@@ -60,7 +56,6 @@ export default function Contact() {
                     </Card>
                 </Col>
 
-                {/* Cột phải: form */}
                 <Col md={7}>
                     <Card className="border-0 shadow-sm">
                         <Card.Body className="p-4">

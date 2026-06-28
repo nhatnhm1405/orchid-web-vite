@@ -11,8 +11,7 @@ export default function RouteRoot() {
     const { theme, toggleTheme } = useTheme()
 
     return (
-        // min-vh-100 + flex-column + flex-grow-1 ở main -> footer luôn nằm đáy dù trang ngắn
-        <div className="d-flex flex-column min-vh-100">
+        <div className="d-flex flex-column min-vh-100" data-bs-theme={theme}>
             <ScrollToTop />
             <Navbar />
 
@@ -22,7 +21,6 @@ export default function RouteRoot() {
 
             <Footer />
 
-            {/* nút theme fixed góc dưới-phải (style trong App.css) */}
             <Button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
                 {theme === 'light' ? <i className="bi bi-moon-fill"></i> : <i className="bi bi-brightness-high-fill"></i>}
             </Button>

@@ -1,7 +1,6 @@
 import { Button, Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-// Trang 404: hiện khi URL không khớp route nào (catch-all path="*")
 export default function NotFound() {
     const navigate = useNavigate()
 
