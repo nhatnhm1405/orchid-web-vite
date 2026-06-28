@@ -1,33 +1,151 @@
-/* dialogClassName="orchid-modal" gắn vào .modal-dialog, nên target con của nó */
 .orchid-modal .modal-content {
     border: none;
     border-radius: 16px;
-    overflow: hidden; /* để header bo góc theo modal */
+    overflow: hidden;
 }
 
-.orchid-modal .modal-header {
-    background: linear-gradient(135deg, #7b2ff7, #2575fc);
-    color: #fff;
-    border-bottom: none;
+/* layout 2 cột bên trong modal */
+.orchid-modal-layout {
+    display: flex;
+    min-height: 420px;
 }
 
-/* nút X mặc định màu đen, invert cho thành trắng nổi trên nền gradient */
-.orchid-modal .modal-header .btn-close {
-    filter: invert(1) grayscale(100%) brightness(200%);
+/* ---- cột trái: ảnh ---- */
+.orchid-modal-img-wrap {
+    position: relative;
+    flex: 0 0 50%;
+    overflow: hidden;
 }
 
 .orchid-modal-img {
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-/* ListGroup flush: cho mỗi dòng thoáng hơn, viền ngăn nhạt */
-.orchid-modal .list-group-item {
-    padding: 0.6rem 0;
-    background: transparent;
-    border-color: #eee;
+/* ribbon Special góc trên-trái */
+.orchid-modal-ribbon {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-.orchid-modal .modal-footer {
-    border-top: none;
+/* tên + category chìm đáy ảnh */
+.orchid-modal-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.65));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ---- cột phải: info ---- */
+.orchid-modal-info {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* nút X tự làm, nằm góc trên-phải cột info */
+.orchid-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--bs-secondary-color);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+}
+.orchid-modal-close:hover {
+    color: var(--bs-body-color);
+}
+
+/* stats: 2 ô xếp ngang */
+.orchid-modal-stats {
+    display: flex;
+    gap: 1rem;
+}
+.orchid-modal-stat {
+    flex: 1;
+    background: var(--bs-tertiary-bg);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.orchid-modal-stat-label {
+    font-size: 0.72rem;
+    color: var(--bs-secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* danh sách thuộc tính */
+.orchid-modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.orchid-modal-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--bs-border-color-translucent);
+}
+.orchid-modal-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.orchid-modal-key {
+    color: var(--bs-secondary-color);
+    min-width: 52px;
+    font-size: 0.82rem;
+}
+
+/* chấm màu */
+.orchid-modal-color-dot {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.15);
+    flex-shrink: 0;
+}
+
+/* responsive: stack dọc trên mobile */
+@media (max-width: 576px) {
+    .orchid-modal-layout {
+        flex-direction: column;
+    }
+    .orchid-modal-img-wrap {
+        flex: 0 0 220px;
+        height: 220px;
+    }
 }

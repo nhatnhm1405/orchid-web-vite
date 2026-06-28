@@ -1,24 +1,31 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Orchids from './components/Orchids'
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import './App.css'
-import { useTheme } from './hooks/useTheme.js';
+import { Route, Routes } from 'react-router-dom';
+import RouteRoot from './RouteRoot';
+import OrchidDetail from './components/OrchidDetail';
+import Contact from './components/Contact';
+import NotFound from './components/NotFound';
+import Natural from './components/Natural';
+import About from './components/About';
+import Profile from './components/Profile';
 
 function App() {
-  const { theme, toggleTheme } = useTheme()
   return (
     <>
-      <div className='p-3'>
-        <Button
-          className="theme-toggle"
-          onClick={toggleTheme}
-        >
-          {theme === 'light' ? <i className="bi bi-moon-fill"></i> : <i className="bi bi-brightness-high-fill"></i>}
-        </Button>
-      </div>
-      <Orchids />
+      <Routes>
+        <Route path='/' element={<RouteRoot />}>
+          <Route index element={<Orchids />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="natural" element={<Natural />} />
+          <Route path="about" element={<About />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="detail/:id" element={<OrchidDetail />} />
+          {/* path="*" = catch-all, khớp mọi URL không trùng route trên -> 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </>
   )
 }

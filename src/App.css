@@ -29,3 +29,41 @@
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
+
+/* nhấc nhẹ nút theme khi hover */
+.theme-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.28);
+}
+
+/* ---------- Navbar ---------- */
+.app-navbar {
+    background: rgba(var(--bs-body-bg-rgb), 0.75) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* brand: phóng nhẹ bông hoa khi rê chuột */
+.app-navbar .brand-flower {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.app-navbar .navbar-brand:hover .brand-flower {
+    transform: rotate(20deg) scale(1.15);
+}
+
+/* mục menu đang active: đậm + màu nhấn */
+.app-navbar .nav-link.active {
+    font-weight: 600;
+    color: var(--bs-primary) !important;
+}
+
+/* ---------- Home hero ---------- */
+.home-hero h1 {
+    letter-spacing: -0.5px;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+    background: var(--bs-tertiary-bg);
+}

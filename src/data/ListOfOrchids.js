@@ -5,11 +5,12 @@ export const ListOfOrchids = [
         rating: 5,
         isSpecial: true,
         isNatural: false,
-        image: 'https://barritaorchids.com/cdn/shop/products/Cf592_1024x1024.jpg',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXizjDl_Q5K4hXCJzCmyh4t7Zq0zsmfdq4YG6C6lnS1ck76B9hQvsMrFc&s=10',
         color: 'Pink',
         numberOfLike: 192,
         origin: 'Taiwan',
-        category: 'Cattleya'
+        category: 'Cattleya',
+        clip: 'https://www.youtube.com/watch?v=bhOEYjiBb7o'
     },
     {
         id: 2,
@@ -21,7 +22,8 @@ export const ListOfOrchids = [
         color: 'White',
         numberOfLike: 150,
         origin: 'Japan',
-        category: 'Phalaenopsis'
+        category: 'Phalaenopsis',
+        clip: 'https://www.youtube.com/watch?v=v4oJmdiS2kQ'
     },
     {
         id: 3,
@@ -33,7 +35,8 @@ export const ListOfOrchids = [
         color: 'Purple',
         numberOfLike: 220,
         origin: 'Thailand',
-        category: 'Dendrobium'
+        category: 'Dendrobium',
+        clip: 'https://www.youtube.com/watch?v=s-WlsfzsaRM'
     },
     {
         id: 4,
@@ -45,7 +48,8 @@ export const ListOfOrchids = [
         color: 'Blue',
         numberOfLike: 175,
         origin: 'India',
-        category: 'Vanda'
+        category: 'Vanda',
+        clip: 'https://www.youtube.com/watch?v=MYTVkArZ1M0'
     },
     {
         id: 5,
@@ -57,7 +61,8 @@ export const ListOfOrchids = [
         color: 'Yellow',
         numberOfLike: 98,
         origin: 'China',
-        category: 'Cymbidium'
+        category: 'Cymbidium',
+        clip: ''
     },
     {
         id: 6,
@@ -69,7 +74,8 @@ export const ListOfOrchids = [
         color: 'Orange',
         numberOfLike: 210,
         origin: 'Brazil',
-        category: 'Miltonia'
+        category: 'Miltonia',
+        clip: 'https://www.youtube.com/watch?v=MRCx83dnkYk'
     },
     {
         id: 7,
@@ -81,7 +87,8 @@ export const ListOfOrchids = [
         color: 'Yellow',
         numberOfLike: 135,
         origin: 'Mexico',
-        category: 'Oncidium'
+        category: 'Oncidium',
+        clip: 'https://www.youtube.com/watch?v=Hg4Okl7dGhM'
     },
     {
         id: 8,
@@ -93,7 +100,8 @@ export const ListOfOrchids = [
         color: 'Green',
         numberOfLike: 188,
         origin: 'Vietnam',
-        category: 'Paphiopedilum'
+        category: 'Paphiopedilum',
+        clip: 'https://www.youtube.com/watch?v=PDd2_VMG9F0'
     },
     {
         id: 9,
@@ -105,7 +113,8 @@ export const ListOfOrchids = [
         color: 'Brown',
         numberOfLike: 75,
         origin: 'Peru',
-        category: 'Brassia'
+        category: 'Brassia',
+        clip: 'https://www.youtube.com/watch?v=PDsT6DcRGKo'
     },
     {
         id: 10,
@@ -117,7 +126,8 @@ export const ListOfOrchids = [
         color: 'Pink',
         numberOfLike: 160,
         origin: 'Guatemala',
-        category: 'Lycaste'
+        category: 'Lycaste',
+        clip: 'https://www.youtube.com/watch?v=dB-DQ_GeR_Q'
     },
     {
         id: 11,
@@ -129,7 +139,8 @@ export const ListOfOrchids = [
         color: 'Red',
         numberOfLike: 230,
         origin: 'Colombia',
-        category: 'Masdevallia'
+        category: 'Masdevallia',
+        clip: 'https://www.youtube.com/watch?v=AQYDi_PqlI8'
     },
     {
         id: 12,
@@ -141,7 +152,8 @@ export const ListOfOrchids = [
         color: 'Purple',
         numberOfLike: 145,
         origin: 'Australia',
-        category: 'Zygopetalum'
+        category: 'Zygopetalum',
+        clip: 'https://www.youtube.com/watch?v=1slfJIKGTSk'
     },
     {
         id: 13,
@@ -153,7 +165,8 @@ export const ListOfOrchids = [
         color: 'Red',
         numberOfLike: 89,
         origin: 'Costa Rica',
-        category: 'Epidendrum'
+        category: 'Epidendrum',
+        clip: 'https://www.youtube.com/watch?v=9f-lsJUTsyI'
     },
     {
         id: 14,
@@ -165,7 +178,8 @@ export const ListOfOrchids = [
         color: 'White',
         numberOfLike: 120,
         origin: 'Nepal',
-        category: 'Coelogyne'
+        category: 'Coelogyne',
+        clip: 'https://www.youtube.com/watch?v=wrYd3b_HZQs'
     },
     {
         id: 15,
@@ -177,7 +191,8 @@ export const ListOfOrchids = [
         color: 'Yellow',
         numberOfLike: 205,
         origin: 'Ecuador',
-        category: 'Stanhopea'
+        category: 'Stanhopea',
+        clip: 'https://www.youtube.com/watch?v=eTmTrytcnrM'
     },
     {
         id: 16,
@@ -189,6 +204,7 @@ export const ListOfOrchids = [
         color: 'White',
         numberOfLike: 170,
         origin: 'Madagascar',
-        category: 'Angraecum'
+        category: 'Angraecum',
+        clip: 'https://www.youtube.com/watch?v=sbyz0rttt0Y&t=329s'
     }
 ];
