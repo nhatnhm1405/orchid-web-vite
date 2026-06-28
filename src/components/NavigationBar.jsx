@@ -1,9 +1,26 @@
 import { NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useGoogleLogin } from '@react-oauth/google'
+import axios from 'axios'
+import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { loginSuccess, logout } from '../store/authSlice'
 
 function NavigationBar() {
+    const dispatch = useDispatch()
+    const { user, isLoggedIn } = useSelector(state => state.auth)
+
+    const login = useGoogleLogin({
+        onSuccess: async (tokenResponse) => {
+            const { data } = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+                headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
+            })
+            dispatch(loginSuccess(data))
+        }
+    })
+
     return (
         <Navbar expand="lg" sticky="top" className="app-navbar bg-body-tertiary shadow-sm">
             <Container>
@@ -29,6 +46,26 @@ function NavigationBar() {
                             <i className="bi bi-person-circle me-1"></i>Profile
                         </Nav.Link>
                     </Nav>
+
+                    {isLoggedIn ? (
+                        <div className="d-flex align-items-center gap-2">
+                            <img
+                                src={user.picture}
+                                alt={user.name}
+                                width={32}
+                                height={32}
+                                style={{ borderRadius: '50%', objectFit: 'cover' }}
+                            />
+                            <span className="small fw-semibold">{user.name}</span>
+                            <Button variant="outline-danger" size="sm" onClick={() => dispatch(logout())}>
+                                <i className="bi bi-box-arrow-right me-1"></i>Logout
+                            </Button>
+                        </div>
+                    ) : (
+                        <Button variant="outline-primary" size="sm" onClick={() => login()}>
+                            <i className="bi bi-google me-1"></i>Login
+                        </Button>
+                    )}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
