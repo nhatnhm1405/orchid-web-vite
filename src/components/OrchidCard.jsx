@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Badge, Button, Card } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import './OrchidCard.css'
 import OrchidCardDetail from './OrchidCardDetail'
 
@@ -11,9 +12,10 @@ const countryCode = {
 }
 
 export default function OrchidCard({ orchid }) {
+    const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
 
-    const { name, image, color, rating, isSpecial, isNatural, category, origin, numberOfLike } = orchid
+    const { id, name, image, color, rating, isSpecial, isNatural, category, origin, numberOfLike } = orchid
     const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating)
     const fallback = 'https://placehold.co/400x300?text=No+Image'
     const code = countryCode[origin]
@@ -62,14 +64,16 @@ export default function OrchidCard({ orchid }) {
                         {color}
                     </Card.Subtitle>
 
-                    <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="w-100"
-                        onClick={() => setShowModal(true)}
-                    >
-                        <i className="bi bi-eye"></i> Quick view
-                    </Button>
+                    <div className="d-flex gap-2">
+                        <Button variant="outline-secondary" size="sm" className="flex-fill"
+                            onClick={() => setShowModal(true)}>
+                            <i className="bi bi-eye"></i> Quick view
+                        </Button>
+                        <Button variant="outline-primary" size="sm" className="flex-fill"
+                            onClick={() => navigate(`/detail/${id}`)}>
+                            Details
+                        </Button>
+                    </div>
                 </div>
             </Card.Body>
 
