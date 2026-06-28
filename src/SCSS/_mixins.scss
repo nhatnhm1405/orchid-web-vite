@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+// flex căn giữa cả 2 chiều
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// gradient nền từ 2 màu
+@mixin gradient-bg($from, $to, $deg: 135deg) {
+    background: linear-gradient($deg, $from, $to);
+}
+
+// card nổi với bo góc + shadow
+@mixin card($radius: $radius-md, $shadow: $shadow-md) {
+    border-radius: $radius;
+    box-shadow: $shadow;
+    background: $white;
+    overflow: hidden;
+}
+
+// transition mượt
+@mixin transition($props: all, $duration: 0.3s) {
+    transition: $props $duration ease;
+}
+
+// responsive breakpoint mobile
+@mixin mobile {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+// responsive breakpoint tablet
+@mixin tablet {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

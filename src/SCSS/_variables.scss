@@ -1,0 +1,27 @@
+// ── Màu chính ──
+$primary:       #6c63ff;
+$primary-dark:  #4b44cc;
+$secondary:     #f59e0b;
+$danger:        #ef4444;
+$success:       #22c55e;
+$text:          #1e1e2e;
+$text-muted:    #6b7280;
+$bg:            #f8f9ff;
+$white:         #ffffff;
+
+// ── Typography ──
+$font-base:     'Segoe UI', sans-serif;
+$font-size-sm:  0.85rem;
+$font-size-md:  1rem;
+$font-size-lg:  1.25rem;
+$font-size-xl:  2rem;
+
+// ── Spacing ──
+$radius-sm:     8px;
+$radius-md:     16px;
+$radius-lg:     999px;
+
+// ── Shadow ──
+$shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md:     0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-lg:     0 16px 40px rgba(0, 0, 0, 0.16);
