@@ -1,23 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import React from 'react'
-import Orchids from './components/Orchids'
 import './App.css'
-import { useTheme } from './hooks/useTheme'
-import { Button } from 'react-bootstrap'
+import { Route, Routes } from 'react-router-dom'
+import RouteRoot from './RouteRoot'
+import Orchids from './components/Orchids'
+import OrchidDetail from './components/OrchidDetail'
+import Contact from './components/Contact'
+import NotFound from './components/NotFound'
 
 function App() {
-    const { theme, toggleTheme } = useTheme()
-
     return (
-        <div data-bs-theme={theme}>
-            <Orchids />
-            <Button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-                {theme === 'light'
-                    ? <i className="bi bi-moon-fill"></i>
-                    : <i className="bi bi-brightness-high-fill"></i>}
-            </Button>
-        </div>
+        <Routes>
+            <Route path='/' element={<RouteRoot />}>
+                <Route index element={<Orchids />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="detail/:id" element={<OrchidDetail />} />
+                <Route path="*" element={<NotFound />} />
+            </Route>
+        </Routes>
     )
 }
 

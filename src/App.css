@@ -32,6 +32,29 @@
     box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.28);
 }
 
+.app-navbar {
+    background: rgba(var(--bs-body-bg-rgb), 0.75) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.app-navbar .brand-flower {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.app-navbar .navbar-brand:hover .brand-flower {
+    transform: rotate(20deg) scale(1.15);
+}
+
+.app-navbar .nav-link.active {
+    font-weight: 600;
+    color: var(--bs-primary) !important;
+}
+
 .home-hero h1 {
     letter-spacing: -0.5px;
+}
+
+.app-footer {
+    background: var(--bs-tertiary-bg);
 }
