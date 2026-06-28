@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { Badge, Button, Card, Col, Container, Row, Tab, Tabs } from 'react-bootstrap'
-import { ListOfOrchids } from '../data/ListOfOrchids'
+import { useSelector } from 'react-redux'
 import './OrchidDetail.css'
 
 const countryCode = {
@@ -13,7 +13,9 @@ const countryCode = {
 export default function OrchidDetail() {
     const { id } = useParams()
     const navigate = useNavigate()
-    const orchid = ListOfOrchids.find(o => String(o.id) === String(id))
+    const list = useSelector(state => state.orchids.list)
+
+    const orchid = list.find(o => String(o.id) === String(id))
 
     if (!orchid) {
         return (
