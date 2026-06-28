@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Badge, Button, Card } from 'react-bootstrap'
 import './OrchidCard.css'
+import OrchidCardDetail from './OrchidCardDetail'
 
 const countryCode = {
     Taiwan: 'tw', Japan: 'jp', Thailand: 'th', India: 'in',
@@ -10,6 +11,8 @@ const countryCode = {
 }
 
 export default function OrchidCard({ orchid }) {
+    const [showModal, setShowModal] = useState(false)
+
     const { name, image, color, rating, isSpecial, isNatural, category, origin, numberOfLike } = orchid
     const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating)
     const fallback = 'https://placehold.co/400x300?text=No+Image'
@@ -59,11 +62,18 @@ export default function OrchidCard({ orchid }) {
                         {color}
                     </Card.Subtitle>
 
-                    <Button variant="outline-primary" size="sm" className="w-100">
-                        Details
+                    <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="w-100"
+                        onClick={() => setShowModal(true)}
+                    >
+                        <i className="bi bi-eye"></i> Quick view
                     </Button>
                 </div>
             </Card.Body>
+
+            <OrchidCardDetail orchid={orchid} show={showModal} onHide={() => setShowModal(false)} />
         </Card>
     )
 }
