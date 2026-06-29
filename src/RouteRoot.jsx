@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import Navbar from './components/NavigationBar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import Notification from './components/Notification'
 import { useTheme } from './hooks/useTheme'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -13,6 +14,7 @@ export default function RouteRoot() {
     return (
         <div className="d-flex flex-column min-vh-100" data-bs-theme={theme}>
             <ScrollToTop />
+            <Notification />
             <Navbar />
 
             <main className="flex-grow-1">

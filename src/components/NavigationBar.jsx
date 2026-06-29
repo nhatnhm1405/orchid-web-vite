@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Navbar from 'react-bootstrap/Navbar'
 import { loginSuccess, logout } from '../store/authSlice'
+import { notify } from '../store/notificationSlice'
 
 function NavigationBar() {
     const dispatch = useDispatch()
@@ -15,12 +16,25 @@ function NavigationBar() {
 
     const login = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
-            const { data } = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-                headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
-            })
-            dispatch(loginSuccess(data))
-        }
+            try {
+                const { data } = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+                    headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
+                })
+                dispatch(loginSuccess(data))
+                dispatch(notify({ message: `Welcome, ${data.name}!` }))
+            } catch {
+                dispatch(notify({ message: 'Login failed. Please try again.', variant: 'danger' }))
+            }
+        },
+        onError: () => {
+            dispatch(notify({ message: 'Login failed. Please try again.', variant: 'danger' }))
+        },
     })
+
+    const handleLogout = () => {
+        dispatch(logout())
+        dispatch(notify({ message: 'Logged out successfully' }))
+    }
 
     return (
         <Navbar expand="lg" sticky="top" className="app-navbar bg-body-tertiary shadow-sm">
@@ -74,7 +88,7 @@ function NavigationBar() {
                                 />
                                 <span className="small fw-semibold">{user.name}</span>
                             </NavLink>
-                            <Button variant="outline-danger" size="sm" onClick={() => dispatch(logout())}>
+                            <Button variant="outline-danger" size="sm" onClick={handleLogout}>
                                 <i className="bi bi-box-arrow-right me-1"></i>Logout
                             </Button>
                         </div>

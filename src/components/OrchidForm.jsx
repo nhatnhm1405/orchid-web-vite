@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 import { Button, Form, Modal } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { addOrchid, updateOrchid } from '../store/orchidSlice'
+import { notify } from '../store/notificationSlice'
 
 const validationSchema = Yup.object({
     name:         Yup.string().required('Name is required'),
@@ -31,13 +32,22 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
         initialValues: editOrchid ?? emptyValues,
         validationSchema,
         onSubmit: async (values, { resetForm }) => {
-            if (isEdit) {
-                await dispatch(updateOrchid({ id: editOrchid.id, orchid: values }))
-            } else {
-                await dispatch(addOrchid(values))
+            try {
+                if (isEdit) {
+                    await dispatch(updateOrchid({ id: editOrchid.id, orchid: values })).unwrap()
+                    dispatch(notify({ message: `Updated "${values.name}" successfully` }))
+                } else {
+                    await dispatch(addOrchid(values)).unwrap()
+                    dispatch(notify({ message: `Added "${values.name}" successfully` }))
+                }
+                resetForm()
+                onHide()
+            } catch {
+                dispatch(notify({
+                    message: `Failed to ${isEdit ? 'update' : 'add'} "${values.name}". Please try again.`,
+                    variant: 'danger',
+                }))
             }
-            resetForm()
-            onHide()
         },
     })
 

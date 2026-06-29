@@ -6,6 +6,7 @@ import './OrchidCard.css'
 import OrchidCardDetail from './OrchidCardDetail'
 import OrchidForm from './OrchidForm'
 import { deleteOrchid } from '../store/orchidSlice'
+import { notify } from '../store/notificationSlice'
 
 const countryCode = {
     Taiwan: 'tw', Japan: 'jp', Thailand: 'th', India: 'in',
@@ -26,27 +27,33 @@ export default function OrchidCard({ orchid }) {
     const fallback = 'https://placehold.co/400x300?text=No+Image'
     const code = countryCode[origin]
 
-    const handleDelete = () => {
-        if (window.confirm(`Delete "${name}"?`)) dispatch(deleteOrchid(id))
+    const handleDelete = async () => {
+        if (!window.confirm(`Delete "${name}"?`)) return
+        try {
+            await dispatch(deleteOrchid(id)).unwrap()
+            dispatch(notify({ message: `Deleted "${name}" successfully` }))
+        } catch {
+            dispatch(notify({ message: `Failed to delete "${name}"`, variant: 'danger' }))
+        }
     }
 
     return (
         <Card className="orchid-card h-100 shadow-sm border-0">
-            <Card.Img
-                variant="top"
-                src={image}
-                alt={name}
-                onError={(e) => { e.currentTarget.src = fallback }}
-                style={{ height: '260px', objectFit: 'cover' }}
-            />
+            <div className="orchid-card-imgwrap">
+                <Card.Img
+                    variant="top"
+                    src={image}
+                    alt={name}
+                    onError={(e) => { e.currentTarget.src = fallback }}
+                    style={{ height: '260px', objectFit: 'cover' }}
+                />
+                {isSpecial && (
+                    <span className="orchid-card-ribbon">Special</span>
+                )}
+            </div>
             <Card.Body className="d-flex flex-column">
-                <Card.Title className="d-flex justify-content-between align-items-start">
+                <Card.Title>
                     <span>{name}</span>
-                    {isSpecial && (
-                        <span className="orchid-card-special">
-                            <i className="bi bi-star-fill"></i> Special
-                        </span>
-                    )}
                 </Card.Title>
 
                 <div className="d-flex justify-content-between mb-2">

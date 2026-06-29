@@ -1,0 +1,22 @@
+.notification-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+}
+
+.notification-toast {
+    animation: toast-slide-down 0.35s ease;
+}
+
+@keyframes toast-slide-down {
+    from {
+        transform: translateY(-120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

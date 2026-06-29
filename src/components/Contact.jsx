@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { notify } from '../store/notificationSlice'
 
 export default function Contact() {
+    const dispatch = useDispatch()
     const [form, setForm] = useState({ name: '', email: '', message: '' })
-    const [sent, setSent] = useState(false)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -12,7 +14,7 @@ export default function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setSent(true)
+        dispatch(notify({ message: 'Thank you! Your message has been sent.' }))
         setForm({ name: '', email: '', message: '' })
     }
 
@@ -59,11 +61,6 @@ export default function Contact() {
                 <Col md={7}>
                     <Card className="border-0 shadow-sm">
                         <Card.Body className="p-4">
-                            {sent && (
-                                <Alert variant="success" onClose={() => setSent(false)} dismissible>
-                                    Thank you! Your message has been sent.
-                                </Alert>
-                            )}
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Full name</Form.Label>

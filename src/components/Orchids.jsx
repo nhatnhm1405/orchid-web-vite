@@ -44,7 +44,7 @@ export default function Orchids() {
             <HeroBanner />
             <Container className="pb-5">
                 {isLoggedIn && (
-                    <div className="d-flex justify-content-end mb-4">
+                    <div className="d-flex justify-content-start mb-4">
                         <Button variant="primary" onClick={() => setShowForm(true)}>
                             <i className="bi bi-plus-lg me-1"></i>Add Orchid
                         </Button>
