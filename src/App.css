@@ -58,3 +58,26 @@
 .app-footer {
     background: var(--bs-tertiary-bg);
 }
+
+/* ── Dark theme polish ── */
+[data-bs-theme='dark'] {
+    --bs-body-bg: #121417;
+    --bs-body-bg-rgb: 18, 20, 23;
+    --bs-tertiary-bg: #1c1f26;
+    --bs-border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme='dark'] .orchid-card {
+    background-color: #1c1f26 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-bs-theme='dark'] .orchid-card:hover {
+    border-color: var(--bs-primary) !important;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-bs-theme='dark'] .card {
+    background-color: #1c1f26;
+}
