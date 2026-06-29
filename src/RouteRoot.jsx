@@ -1,4 +1,3 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import Navbar from './components/NavigationBar'

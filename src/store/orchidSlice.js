@@ -45,12 +45,21 @@ const orchidSlice = createSlice({
             .addCase(addOrchid.fulfilled, (state, action) => {
                 state.list.push(action.payload)
             })
+            .addCase(addOrchid.rejected, (state, action) => {
+                state.error = action.error.message
+            })
             .addCase(updateOrchid.fulfilled, (state, action) => {
                 const idx = state.list.findIndex(o => o.id === action.payload.id)
                 if (idx !== -1) state.list[idx] = action.payload
             })
+            .addCase(updateOrchid.rejected, (state, action) => {
+                state.error = action.error.message
+            })
             .addCase(deleteOrchid.fulfilled, (state, action) => {
                 state.list = state.list.filter(o => o.id !== action.payload)
+            })
+            .addCase(deleteOrchid.rejected, (state, action) => {
+                state.error = action.error.message
             })
     },
 })

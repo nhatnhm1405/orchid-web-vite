@@ -75,7 +75,7 @@ export default function OrchidCardDetail({ orchid, show, onHide }) {
                                 <i className="bi bi-palette-fill text-primary"></i>
                                 <span className="orchid-modal-key">Color</span>
                                 <span className="d-flex align-items-center gap-2">
-                                    <span className="orchid-modal-color-dot" style={{ backgroundColor: color.toLowerCase() }} />
+                                    <span className="orchid-modal-color-dot" style={{ backgroundColor: color?.toLowerCase() }} />
                                     {color}
                                 </span>
                             </li>

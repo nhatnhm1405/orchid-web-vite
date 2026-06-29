@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Badge, Button, Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -76,7 +76,7 @@ export default function OrchidCard({ orchid }) {
                         {origin} ·
                         <span style={{
                             display: 'inline-block', width: 12, height: 12,
-                            borderRadius: '50%', backgroundColor: color.toLowerCase(), border: '1px solid #ccc',
+                            borderRadius: '50%', backgroundColor: color?.toLowerCase(), border: '1px solid #ccc',
                         }} />
                         {color}
                     </Card.Subtitle>

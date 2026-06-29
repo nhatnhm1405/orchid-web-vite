@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Badge, Button, Card, Col, Container, Row, Tab, Tabs } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { Badge, Button, Card, Col, Container, Row, Spinner, Tab, Tabs } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchOrchids } from '../store/orchidSlice'
 import './OrchidDetail.css'
 
 const countryCode = {
@@ -13,9 +15,22 @@ const countryCode = {
 export default function OrchidDetail() {
     const { id } = useParams()
     const navigate = useNavigate()
-    const list = useSelector(state => state.orchids.list)
+    const dispatch = useDispatch()
+    const { list, status } = useSelector(state => state.orchids)
+
+    useEffect(() => {
+        if (status === 'idle') dispatch(fetchOrchids())
+    }, [dispatch, status])
 
     const orchid = list.find(o => String(o.id) === String(id))
+
+    if (status === 'loading') {
+        return (
+            <Container className="py-5 text-center">
+                <Spinner animation="border" variant="primary" />
+            </Container>
+        )
+    }
 
     if (!orchid) {
         return (
@@ -112,7 +127,7 @@ export default function OrchidDetail() {
                                             <span className="orchid-info-icon"><i className="bi bi-palette-fill"></i></span>
                                             <span className="orchid-info-key">Color</span>
                                             <span className="orchid-info-val d-flex align-items-center gap-2">
-                                                <span className="orchid-color-dot" style={{ backgroundColor: color.toLowerCase() }} />
+                                                <span className="orchid-color-dot" style={{ backgroundColor: color?.toLowerCase() }} />
                                                 {color}
                                             </span>
                                         </li>
