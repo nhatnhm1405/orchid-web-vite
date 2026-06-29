@@ -23,7 +23,14 @@ export default function HeroBanner() {
             </Carousel>
 
             <div className="hero-overlay">
-                <h1 className="hero-title">🌸 Orchid Gallery</h1>
+                <h1 className="hero-title">
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/1087/1087431.png"
+                        alt="Orchid Gallery logo"
+                        style={{ height: '1em', verticalAlign: '-0.15em', marginRight: '0.4rem' }}
+                    />
+                    Orchid Gallery
+                </h1>
                 <p className="hero-subtitle">
                     Discover {ListOfOrchids.length} beautiful orchids from around the world
                 </p>

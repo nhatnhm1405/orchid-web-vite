@@ -34,16 +34,6 @@ export default function Profile() {
         <div className="profile-page">
             <Container style={{ maxWidth: 600 }}>
 
-                <div className="profile-hero">
-                    <img
-                        src={user.picture}
-                        alt={user.name}
-                        className="profile-hero__avatar"
-                    />
-                    <div className="profile-hero__name">{user.name}</div>
-                    <div className="profile-hero__email">{user.email}</div>
-                </div>
-
                 <div className="profile-info">
                     <div className="profile-info__title">
                         <i className="bi bi-person-lines-fill me-2"></i>Profile Page

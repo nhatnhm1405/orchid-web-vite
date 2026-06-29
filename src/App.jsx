@@ -8,6 +8,7 @@ import OrchidDetail from './components/OrchidDetail'
 import Contact from './components/Contact'
 import NotFound from './components/NotFound'
 import Natural from './components/Natural'
+import Special from './components/Special'
 import About from './components/About'
 import Profile from './components/Profile'
 
@@ -18,6 +19,7 @@ function App() {
                 <Route index element={<Orchids />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="natural" element={<Natural />} />
+                <Route path="special" element={<Special />} />
                 <Route path="about" element={<About />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="detail/:id" element={<OrchidDetail />} />

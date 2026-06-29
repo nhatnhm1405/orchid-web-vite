@@ -5,6 +5,7 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import Navbar from 'react-bootstrap/Navbar'
 import { loginSuccess, logout } from '../store/authSlice'
 
@@ -25,7 +26,13 @@ function NavigationBar() {
         <Navbar expand="lg" sticky="top" className="app-navbar bg-body-tertiary shadow-sm">
             <Container>
                 <Navbar.Brand as={NavLink} to="/" className="fw-bold d-flex align-items-center gap-2">
-                    <span className="brand-flower">🌸</span> Orchid Gallery
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/1087/1087431.png"
+                        alt="Orchid Gallery logo"
+                        className="brand-flower"
+                        width={28}
+                        height={28}
+                    /> Orchid Gallery
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -33,30 +40,40 @@ function NavigationBar() {
                         <Nav.Link as={NavLink} to="/" end>
                             <i className="bi bi-house-door me-1"></i>Home
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/natural">
-                            <i className="bi bi-tree me-1"></i>Natural
-                        </Nav.Link>
+                        <NavDropdown
+                            title={<><i className="bi bi-funnel me-1"></i>Filter</>}
+                            id="filter-dropdown"
+                        >
+                            <NavDropdown.Item as={NavLink} to="/" end>
+                                <i className="bi bi-grid me-2"></i>All Orchids
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/natural">
+                                <i className="bi bi-tree me-2"></i>Natural
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/special">
+                                <i className="bi bi-star me-2"></i>Special
+                            </NavDropdown.Item>
+                        </NavDropdown>
                         <Nav.Link as={NavLink} to="/about">
                             <i className="bi bi-info-circle me-1"></i>About
                         </Nav.Link>
                         <Nav.Link as={NavLink} to="/contact">
                             <i className="bi bi-envelope me-1"></i>Contact
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/profile">
-                            <i className="bi bi-person-circle me-1"></i>Profile
-                        </Nav.Link>
                     </Nav>
 
                     {isLoggedIn ? (
                         <div className="d-flex align-items-center gap-2">
-                            <img
-                                src={user.picture}
-                                alt={user.name}
-                                width={32}
-                                height={32}
-                                style={{ borderRadius: '50%', objectFit: 'cover' }}
-                            />
-                            <span className="small fw-semibold">{user.name}</span>
+                            <NavLink to="/profile" className="d-flex align-items-center gap-2 text-decoration-none text-reset">
+                                <img
+                                    src={user.picture}
+                                    alt={user.name}
+                                    width={32}
+                                    height={32}
+                                    style={{ borderRadius: '50%', objectFit: 'cover' }}
+                                />
+                                <span className="small fw-semibold">{user.name}</span>
+                            </NavLink>
                             <Button variant="outline-danger" size="sm" onClick={() => dispatch(logout())}>
                                 <i className="bi bi-box-arrow-right me-1"></i>Logout
                             </Button>

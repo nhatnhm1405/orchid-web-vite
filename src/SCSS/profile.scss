@@ -9,44 +9,6 @@
     padding: 2.5rem 1rem;
 }
 
-// ── hero card ──
-.profile-hero {
-    @include card($radius-md, $shadow-lg);
-    @include gradient-bg($primary, $primary-dark);
-    @include flex-center;
-    flex-direction: column;
-    text-align: center;
-    padding: 2.5rem 2rem;
-    margin-bottom: 1.5rem;
-    color: $white;
-
-    &__avatar {
-        width: 96px;
-        height: 96px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid rgba($white, 0.6);
-        box-shadow: $shadow-md;
-        margin-bottom: 1rem;
-        @include transition(transform);
-
-        &:hover {
-            transform: scale(1.06);
-        }
-    }
-
-    &__name {
-        font-size: $font-size-xl;
-        font-weight: 800;
-        margin-bottom: 0.25rem;
-    }
-
-    &__email {
-        font-size: $font-size-sm;
-        color: rgba($white, 0.75);
-    }
-}
-
 // ── info card ──
 .profile-info {
     @include card;
