@@ -43,7 +43,7 @@ const orchidSlice = createSlice({
                 state.error = action.error.message
             })
             .addCase(addOrchid.fulfilled, (state, action) => {
-                state.list.push(action.payload)
+                state.list.unshift(action.payload)
             })
             .addCase(addOrchid.rejected, (state, action) => {
                 state.error = action.error.message

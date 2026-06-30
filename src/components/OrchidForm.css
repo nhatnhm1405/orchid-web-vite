@@ -1,0 +1,169 @@
+/* ── Add Orchid button (orchid-gradient pill) ── */
+.btn-add-orchid {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    border-radius: 999px;
+    padding: 0.55rem 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #c026d3, #7c3aed);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn-add-orchid:hover,
+.btn-add-orchid:focus {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(124, 58, 237, 0.42);
+    filter: brightness(1.05);
+}
+
+.btn-add-orchid:active {
+    transform: translateY(0);
+}
+
+.btn-add-orchid i {
+    font-size: 1.05rem;
+}
+
+/* ── Form modal ── */
+.orchid-form-modal .modal-content {
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 3rem rgba(60, 20, 80, 0.25);
+}
+
+.orchid-form-modal .modal-header {
+    background: linear-gradient(135deg, #c026d3, #7c3aed);
+    color: #fff;
+    border-bottom: none;
+    padding: 1.1rem 1.4rem;
+}
+
+.orchid-form-modal .modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+.orchid-form-modal .modal-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 700;
+}
+
+.orchid-form-modal .modal-body {
+    padding: 1.5rem 1.6rem;
+}
+
+/* Field labels */
+.orchid-form-modal .form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.35rem;
+}
+
+.orchid-form-modal .form-label .req {
+    color: #e11d48;
+    margin-left: 2px;
+}
+
+/* Inputs */
+.orchid-form-modal .form-control {
+    border-radius: 0.6rem;
+    padding: 0.55rem 0.8rem;
+    border-color: var(--bs-border-color);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.orchid-form-modal .form-control:focus {
+    border-color: #a855f5;
+    box-shadow: 0 0 0 0.2rem rgba(168, 85, 247, 0.2);
+}
+
+/* Color field with live swatch */
+.orchid-color-field {
+    position: relative;
+}
+
+.orchid-color-field.has-swatch .form-control {
+    padding-left: 2.1rem;
+}
+
+.orchid-color-field .swatch-preview {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+/* Toggle switches */
+.orchid-form-modal .form-switch .form-check-input {
+    width: 2.4em;
+    height: 1.25em;
+    cursor: pointer;
+}
+
+.orchid-form-modal .form-switch .form-check-input:checked {
+    background-color: #a855f5;
+    border-color: #a855f5;
+}
+
+.orchid-form-modal .form-switch .form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(168, 85, 247, 0.2);
+    border-color: #a855f5;
+}
+
+.orchid-form-modal .form-check-label {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Image preview thumbnail */
+.orchid-image-preview {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    border: 1px solid var(--bs-border-color);
+    background: var(--bs-tertiary-bg);
+}
+
+/* Footer buttons */
+.orchid-form-modal .btn-save {
+    border: none;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    padding: 0.5rem 1.4rem;
+    background: linear-gradient(135deg, #c026d3, #7c3aed);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.orchid-form-modal .btn-save:hover:not(:disabled) {
+    filter: brightness(1.05);
+}
+
+.orchid-form-modal .btn-save:disabled {
+    opacity: 0.7;
+}
+
+.orchid-form-modal .btn-cancel {
+    border-radius: 0.6rem;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+}
+
+/* Dark theme */
+[data-bs-theme='dark'] .orchid-form-modal .modal-content {
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.6);
+}

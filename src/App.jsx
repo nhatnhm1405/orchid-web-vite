@@ -10,6 +10,7 @@ import Natural from './components/Natural'
 import Special from './components/Special'
 import About from './components/About'
 import Profile from './components/Profile'
+import Manage from './components/Manage'
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="special" element={<Special />} />
                 <Route path="about" element={<About />} />
                 <Route path="profile" element={<Profile />} />
+                <Route path="manage" element={<Manage />} />
                 <Route path="detail/:id" element={<OrchidDetail />} />
                 <Route path="*" element={<NotFound />} />
             </Route>

@@ -1,16 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
+import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import OrchidCard from './OrchidCard.jsx'
 import HeroBanner from './HeroBanner.jsx'
-import OrchidForm from './OrchidForm.jsx'
 import { fetchOrchids } from '../store/orchidSlice'
 
 export default function Orchids() {
     const dispatch = useDispatch()
     const { list, status, error } = useSelector(state => state.orchids)
-    const { isLoggedIn } = useSelector(state => state.auth)
-    const [showForm, setShowForm] = useState(false)
 
     useEffect(() => {
         if (status === 'idle') dispatch(fetchOrchids())
@@ -43,17 +40,8 @@ export default function Orchids() {
         <>
             <HeroBanner />
             <Container className="pb-5">
-                {isLoggedIn && (
-                    <div className="d-flex justify-content-start mb-4">
-                        <Button variant="primary" onClick={() => setShowForm(true)}>
-                            <i className="bi bi-plus-lg me-1"></i>Add Orchid
-                        </Button>
-                    </div>
-                )}
                 {renderContent()}
             </Container>
-
-            <OrchidForm show={showForm} onHide={() => setShowForm(false)} editOrchid={null} />
         </>
     )
 }

@@ -1,9 +1,10 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Form, Modal, Spinner } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { addOrchid, updateOrchid } from '../store/orchidSlice'
 import { notify } from '../store/notificationSlice'
+import './OrchidForm.css'
 
 const validationSchema = Yup.object({
     name:         Yup.string().required('Name is required'),
@@ -51,56 +52,72 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
         },
     })
 
+    const validImage = formik.values.image && !formik.errors.image
+
     return (
-        <Modal show={show} onHide={onHide} size="lg" centered>
+        <Modal show={show} onHide={onHide} size="lg" centered className="orchid-form-modal">
             <Modal.Header closeButton>
-                <Modal.Title>{isEdit ? 'Edit Orchid' : 'Add New Orchid'}</Modal.Title>
+                <Modal.Title>
+                    <i className={`bi ${isEdit ? 'bi-pencil-square' : 'bi-flower1'}`}></i>
+                    {isEdit ? 'Edit Orchid' : 'Add New Orchid'}
+                </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <Form onSubmit={formik.handleSubmit}>
+                <Form onSubmit={formik.handleSubmit} noValidate>
                     <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Name<span className="req">*</span></Form.Label>
                         <Form.Control
                             name="name"
+                            placeholder="e.g. Taichung Beauty"
                             value={formik.values.name}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             isInvalid={formik.touched.name && !!formik.errors.name}
                         />
                         <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
                     </Form.Group>
 
-                    <div className="d-flex gap-3 mb-3">
+                    <div className="d-flex gap-3 mb-3 flex-wrap">
                         <Form.Group className="flex-fill">
-                            <Form.Label>Category</Form.Label>
+                            <Form.Label>Category<span className="req">*</span></Form.Label>
                             <Form.Control
                                 name="category"
+                                placeholder="e.g. Cattleya"
                                 value={formik.values.category}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 isInvalid={formik.touched.category && !!formik.errors.category}
                             />
                             <Form.Control.Feedback type="invalid">{formik.errors.category}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className="flex-fill">
-                            <Form.Label>Origin</Form.Label>
+                            <Form.Label>Origin<span className="req">*</span></Form.Label>
                             <Form.Control
                                 name="origin"
+                                placeholder="e.g. Taiwan"
                                 value={formik.values.origin}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 isInvalid={formik.touched.origin && !!formik.errors.origin}
                             />
                             <Form.Control.Feedback type="invalid">{formik.errors.origin}</Form.Control.Feedback>
                         </Form.Group>
                     </div>
 
-                    <div className="d-flex gap-3 mb-3">
-                        <Form.Group className="flex-fill">
-                            <Form.Label>Color</Form.Label>
+                    <div className="d-flex gap-3 mb-3 flex-wrap">
+                        <Form.Group className={`flex-fill orchid-color-field${formik.values.color ? ' has-swatch' : ''}`}>
+                            <Form.Label>Color<span className="req">*</span></Form.Label>
+                            {formik.values.color && (
+                                <span className="swatch-preview" style={{ backgroundColor: formik.values.color.toLowerCase() }} />
+                            )}
                             <Form.Control
                                 name="color"
+                                placeholder="e.g. Pink"
                                 value={formik.values.color}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 isInvalid={formik.touched.color && !!formik.errors.color}
                             />
                             <Form.Control.Feedback type="invalid">{formik.errors.color}</Form.Control.Feedback>
@@ -131,14 +148,14 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
 
                     <div className="d-flex gap-4 mb-3">
                         <Form.Check
-                            type="checkbox"
+                            type="switch"
                             label="Special"
                             name="isSpecial"
                             checked={formik.values.isSpecial}
                             onChange={formik.handleChange}
                         />
                         <Form.Check
-                            type="checkbox"
+                            type="switch"
                             label="Natural"
                             name="isNatural"
                             checked={formik.values.isNatural}
@@ -146,32 +163,49 @@ export default function OrchidForm({ show, onHide, editOrchid }) {
                         />
                     </div>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Image URL</Form.Label>
-                        <Form.Control
-                            name="image"
-                            value={formik.values.image}
-                            onChange={formik.handleChange}
-                            isInvalid={formik.touched.image && !!formik.errors.image}
-                        />
-                        <Form.Control.Feedback type="invalid">{formik.errors.image}</Form.Control.Feedback>
-                    </Form.Group>
+                    <div className="d-flex gap-3 mb-3 flex-wrap align-items-start">
+                        <Form.Group className="flex-fill">
+                            <Form.Label>Image URL<span className="req">*</span></Form.Label>
+                            <Form.Control
+                                name="image"
+                                placeholder="https://..."
+                                value={formik.values.image}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                isInvalid={formik.touched.image && !!formik.errors.image}
+                            />
+                            <Form.Control.Feedback type="invalid">{formik.errors.image}</Form.Control.Feedback>
+                        </Form.Group>
+                        {validImage && (
+                            <img
+                                className="orchid-image-preview"
+                                style={{ width: 180 }}
+                                src={formik.values.image}
+                                alt="preview"
+                                onError={(e) => { e.currentTarget.style.display = 'none' }}
+                            />
+                        )}
+                    </div>
 
                     <Form.Group className="mb-4">
-                        <Form.Label>Clip URL <span className="text-muted small">(optional)</span></Form.Label>
+                        <Form.Label>Clip URL <span className="text-muted small fw-normal">(optional)</span></Form.Label>
                         <Form.Control
                             name="clip"
+                            placeholder="https://..."
                             value={formik.values.clip}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             isInvalid={formik.touched.clip && !!formik.errors.clip}
                         />
                         <Form.Control.Feedback type="invalid">{formik.errors.clip}</Form.Control.Feedback>
                     </Form.Group>
 
                     <div className="d-flex justify-content-end gap-2">
-                        <Button variant="secondary" onClick={onHide}>Cancel</Button>
-                        <Button variant="primary" type="submit" disabled={formik.isSubmitting}>
-                            {formik.isSubmitting ? 'Saving...' : isEdit ? 'Save changes' : 'Add orchid'}
+                        <Button variant="light" className="btn-cancel" onClick={onHide}>Cancel</Button>
+                        <Button type="submit" className="btn-save" disabled={formik.isSubmitting}>
+                            {formik.isSubmitting
+                                ? <><Spinner as="span" size="sm" animation="border" className="me-1" />Saving…</>
+                                : <><i className={`bi ${isEdit ? 'bi-check-lg' : 'bi-plus-lg'} me-1`}></i>{isEdit ? 'Save changes' : 'Add orchid'}</>}
                         </Button>
                     </div>
                 </Form>

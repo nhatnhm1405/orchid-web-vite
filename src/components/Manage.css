@@ -1,0 +1,40 @@
+.manage-table-wrap {
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: var(--bs-body-bg);
+}
+
+.manage-table thead th {
+    background: var(--bs-tertiary-bg);
+    border-bottom: 2px solid var(--bs-border-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--bs-secondary-color);
+    padding: 0.85rem 1rem;
+    white-space: nowrap;
+}
+
+.manage-table tbody td {
+    padding: 0.7rem 1rem;
+    vertical-align: middle;
+}
+
+.manage-thumb {
+    width: 64px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.manage-actions-toggle::after {
+    display: none;
+}
+
+.manage-actions-toggle {
+    border: none;
+    padding: 0.25rem 0.5rem;
+}

@@ -74,6 +74,11 @@ function NavigationBar() {
                         <Nav.Link as={NavLink} to="/contact">
                             <i className="bi bi-envelope me-1"></i>Contact
                         </Nav.Link>
+                        {isLoggedIn && (
+                            <Nav.Link as={NavLink} to="/manage">
+                                <i className="bi bi-table me-1"></i>Manage
+                            </Nav.Link>
+                        )}
                     </Nav>
 
                     {isLoggedIn ? (

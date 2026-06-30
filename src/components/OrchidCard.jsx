@@ -1,12 +1,8 @@
 import { useState } from 'react'
-import { Badge, Button, Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import './OrchidCard.css'
 import OrchidCardDetail from './OrchidCardDetail'
-import OrchidForm from './OrchidForm'
-import { deleteOrchid } from '../store/orchidSlice'
-import { notify } from '../store/notificationSlice'
 
 const countryCode = {
     Taiwan: 'tw', Japan: 'jp', Thailand: 'th', India: 'in',
@@ -17,25 +13,12 @@ const countryCode = {
 
 export default function OrchidCard({ orchid }) {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const { isLoggedIn } = useSelector(state => state.auth)
     const [showModal, setShowModal] = useState(false)
-    const [showEdit, setShowEdit] = useState(false)
 
     const { id, name, image, color, rating, isSpecial, isNatural, category, origin, numberOfLike } = orchid
     const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating)
     const fallback = 'https://placehold.co/400x300?text=No+Image'
     const code = countryCode[origin]
-
-    const handleDelete = async () => {
-        if (!window.confirm(`Delete "${name}"?`)) return
-        try {
-            await dispatch(deleteOrchid(id)).unwrap()
-            dispatch(notify({ message: `Deleted "${name}" successfully` }))
-        } catch {
-            dispatch(notify({ message: `Failed to delete "${name}"`, variant: 'danger' }))
-        }
-    }
 
     return (
         <Card className="orchid-card h-100 shadow-sm border-0">
@@ -52,36 +35,34 @@ export default function OrchidCard({ orchid }) {
                 )}
             </div>
             <Card.Body className="d-flex flex-column">
-                <Card.Title>
-                    <span>{name}</span>
-                </Card.Title>
+                <Card.Title>{name}</Card.Title>
 
-                <div className="d-flex justify-content-between mb-2">
-                    <span className="text-warning">{stars}</span>
-                    <span className="text-danger">♥ {numberOfLike}</span>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                    <span className="orchid-rating">{stars}</span>
+                    <span className="orchid-likes">
+                        <i className="bi bi-heart-fill"></i> {numberOfLike}
+                    </span>
                 </div>
 
                 <div className="mt-auto">
-                    <div className="d-flex gap-1 flex-wrap mb-2">
-                        <Badge bg="info">{category}</Badge>
+                    <div className="d-flex gap-2 flex-wrap mb-2">
+                        <span className="orchid-pill orchid-pill-category">{category}</span>
                         {isNatural === true || isNatural === 'true'
-                            ? <Badge bg="success">Natural</Badge>
-                            : <Badge bg="secondary">Hybrid</Badge>}
+                            ? <span className="orchid-pill orchid-pill-natural"><i className="bi bi-leaf-fill"></i>Natural</span>
+                            : <span className="orchid-pill orchid-pill-hybrid">Hybrid</span>}
                     </div>
 
-                    <Card.Subtitle className="text-muted mb-3 d-flex align-items-center gap-1">
+                    <div className="orchid-meta mb-3">
                         {code && (
-                            <img src={`https://flagcdn.com/24x18/${code}.png`} alt={origin} width={24} height={18} />
+                            <img className="flag" src={`https://flagcdn.com/24x18/${code}.png`} alt={origin} width={24} height={18} />
                         )}
-                        {origin} ·
-                        <span style={{
-                            display: 'inline-block', width: 12, height: 12,
-                            borderRadius: '50%', backgroundColor: color?.toLowerCase(), border: '1px solid #ccc',
-                        }} />
-                        {color}
-                    </Card.Subtitle>
+                        <span>{origin}</span>
+                        <span className="dot-sep">·</span>
+                        <span className="orchid-color-swatch" style={{ backgroundColor: color?.toLowerCase() }} />
+                        <span>{color}</span>
+                    </div>
 
-                    <div className="d-flex gap-2 mb-2">
+                    <div className="d-flex gap-2">
                         <Button variant="outline-secondary" size="sm" className="flex-fill"
                             onClick={() => setShowModal(true)}>
                             <i className="bi bi-eye"></i> Quick view
@@ -91,24 +72,10 @@ export default function OrchidCard({ orchid }) {
                             Details
                         </Button>
                     </div>
-
-                    {isLoggedIn && (
-                        <div className="d-flex gap-2">
-                            <Button variant="outline-warning" size="sm" className="flex-fill"
-                                onClick={() => setShowEdit(true)}>
-                                <i className="bi bi-pencil"></i> Edit
-                            </Button>
-                            <Button variant="outline-danger" size="sm" className="flex-fill"
-                                onClick={handleDelete}>
-                                <i className="bi bi-trash"></i> Delete
-                            </Button>
-                        </div>
-                    )}
                 </div>
             </Card.Body>
 
             <OrchidCardDetail orchid={orchid} show={showModal} onHide={() => setShowModal(false)} />
-            <OrchidForm show={showEdit} onHide={() => setShowEdit(false)} editOrchid={orchid} />
         </Card>
     )
 }
